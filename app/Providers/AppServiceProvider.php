@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\DFEService;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
 
@@ -18,5 +19,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
+
+        DFEService::$testing = true;
+        DFEService::$environment = 2;
     }
 }

@@ -14,7 +14,7 @@ it('logs and processes DFe data correctly', function () {
         ],
     ]);
 
-    $syncDFES = new \App\Jobs\SyncDFES($dfeService);
+    $syncDFES = new \App\Jobs\SyncDFEs($dfeService);
     $syncDFES->handle();
 
     $this->assertDatabaseCount('dfe_docs', 3);

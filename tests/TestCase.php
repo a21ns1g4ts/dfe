@@ -21,7 +21,7 @@ abstract class TestCase extends BaseTestCase
 
         $config = [
             'atualizacao' => '2017-02-20 09:11:21',
-            'tpAmb' => 2,
+            // 'tpAmb' => 2,
             'razaosocial' => '57.302.627 ATILA DENIS CARDOSO DA SILVA',
             'cnpj' => '57302627000114',
             'siglaUF' => 'CE',

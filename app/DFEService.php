@@ -15,6 +15,8 @@ class DFEService
 
     public function __construct(protected array $config, protected string $pfxContent, protected string $password)
     {
+        $config['tpAmb'] = $config['tpAmb'] ?? self::$environment;
+
         $this->tools = new Tools(json_encode($config), Certificate::readPfx($this->pfxContent, $this->password));
         $this->tools->setEnvironment(self::$environment);
         $this->tools->model('55');

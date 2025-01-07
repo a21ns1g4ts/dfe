@@ -12,7 +12,7 @@ use Illuminate\Queue\SerializesModels;
 
 use function Illuminate\Log\log;
 
-class SyncDFES implements ShouldQueue
+class SyncDFEs implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
 
@@ -20,14 +20,14 @@ class SyncDFES implements ShouldQueue
 
     public function handle()
     {
-        log('SyncDFES:handle', ['ultNSU' => $this->ultNSU]);
+        log('SyncDFEs:handle', ['ultNSU' => $this->ultNSU]);
 
         $maxNSU = $this->ultNSU;
         $limit = 10;
         $iCount = 0;
 
         while ($this->ultNSU <= $maxNSU) {
-            log('SyncDFES:handle:while', ['ultNSU' => $this->ultNSU, 'maxNSU' => $maxNSU, 'iCount' => $iCount]);
+            log('SyncDFEs:handle:while', ['ultNSU' => $this->ultNSU, 'maxNSU' => $maxNSU, 'iCount' => $iCount]);
             $iCount++;
 
             if ($iCount >= $limit) {
@@ -37,14 +37,14 @@ class SyncDFES implements ShouldQueue
             $data = $this->dfeService->sefazDistDFe($this->ultNSU);
 
             if (count($data['lote']) > 0) {
-                log('SyncDFES:handle:insert', ['lote' => $data['lote']]);
+                log('SyncDFEs:handle:insert', ['lote' => $data['lote']]);
                 DFEDocs::insert($data['lote']);
             }
 
             $this->ultNSU = $data['ult_nsu'];
 
             if ($this->ultNSU == $data['max_nsu']) {
-                log('SyncDFES:handle:break', ['ultNSU' => $this->ultNSU, 'maxNSU' => $maxNSU]);
+                log('SyncDFEs:handle:break', ['ultNSU' => $this->ultNSU, 'maxNSU' => $maxNSU]);
                 break;
             }
 
