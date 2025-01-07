@@ -2,12 +2,10 @@
 
 namespace Database\Factories;
 
-use App\Models\Company;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
-use Wallo\FilamentCompanies\FilamentCompanies;
 
 class UserFactory extends Factory
 {
@@ -49,26 +47,5 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
-    }
-
-    /**
-     * Indicate that the user should have a personal company.
-     */
-    public function withPersonalCompany(?callable $callback = null): static
-    {
-        if (! FilamentCompanies::hasCompanyFeatures()) {
-            return $this->state([]);
-        }
-
-        return $this->has(
-            Company::factory()
-                ->state(fn (array $attributes, User $user) => [
-                    'name' => $user->name.'\'s Company',
-                    'user_id' => $user->id,
-                    'personal_company' => true,
-                ])
-                ->when(is_callable($callback), $callback),
-            'ownedCompanies'
-        );
     }
 }

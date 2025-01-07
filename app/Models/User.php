@@ -2,6 +2,21 @@
 
 namespace App\Models;
 
-use A2Insights\FilamentSaas\User\User as UserUser;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class User extends UserUser {}
+class User extends Authenticatable
+{
+    use HasFactory;
+    use Notifiable;
+
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+
+    protected $casts = [
+        'email_verified_at' => 'immutable_datetime',
+    ];
+}

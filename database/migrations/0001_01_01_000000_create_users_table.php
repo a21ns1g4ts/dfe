@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use Wallo\FilamentCompanies\FilamentCompanies;
 
 return new class extends Migration
 {
@@ -17,12 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
-            $table->string('password')->nullable(
-                FilamentCompanies::hasSocialiteFeatures()
-            );
+            $table->string('password');
             $table->rememberToken();
-            $table->foreignId('current_company_id')->nullable();
-            $table->foreignId('current_connected_account_id')->nullable();
             $table->string('profile_photo_path', 2048)->nullable();
             $table->timestamps();
         });
