@@ -21,7 +21,7 @@ class DFEService
     ) {
         $config['tpAmb'] = $config['tpAmb'] ?? self::$environment;
 
-        $this->tools = new Tools(json_encode($config), Certificate::readPfx($this->pfxContent, 170481));
+        $this->tools = new Tools(json_encode($config), Certificate::readPfx($this->pfxContent, $password));
         $this->tools->setEnvironment(self::$environment);
         $this->tools->model('55');
     }
@@ -111,6 +111,8 @@ class DFEService
             if ($ultNSU == $data['max_nsu']) {
                 break;
             }
+
+            sleep(2);
         }
 
         if (! empty($nsusToInsert)) {
