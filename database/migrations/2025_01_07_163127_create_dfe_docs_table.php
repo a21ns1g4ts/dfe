@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('dfe_docs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('dfe_id')->constrained()->cascadeOnDelete();
             $table->string('nsu');
             $table->string('schema');
             $table->text('content');
