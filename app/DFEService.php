@@ -15,26 +15,7 @@ class DFEService
 
     public function __construct(protected array $config, protected string $pfxContent, protected string $password)
     {
-        $arr = [
-            'atualizacao' => '2017-02-20 09:11:21',
-            'tpAmb' => self::$environment,
-            'razaosocial' => '57.302.627 ATILA DENIS CARDOSO DA SILVA',
-            'cnpj' => '57302627000114',
-            'siglaUF' => 'CE',
-            'schemes' => 'PL_009_V4',
-            'versao' => '4.00',
-            'tokenIBPT' => 'AAAAAAA',
-            'CSC' => 'GPB0JBWLUR6HWFTVEAS6RJ69GPCROFPBBB8G',
-            'CSCid' => '000001',
-            'proxyConf' => [
-                'proxyIp' => '',
-                'proxyPort' => '',
-                'proxyUser' => '',
-                'proxyPass' => '',
-            ],
-        ];
-        $configJson = json_encode($arr);
-        $this->tools = new Tools($configJson, Certificate::readPfx($this->pfxContent, $this->password));
+        $this->tools = new Tools(json_encode($config), Certificate::readPfx($this->pfxContent, $this->password));
         $this->tools->setEnvironment(self::$environment);
         $this->tools->model('55');
     }
