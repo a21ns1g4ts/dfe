@@ -21,6 +21,6 @@ class AppServiceProvider extends ServiceProvider
         Model::unguard();
 
         DFEService::$testing = true;
-        DFEService::$environment = 2;
+        DFEService::$environment = 1;
     }
 }
