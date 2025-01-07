@@ -2,7 +2,6 @@
 
 namespace App\Console\Commands;
 
-use App\DFEService;
 use App\Jobs\SyncDFEs as JobsSyncDFEs;
 use Illuminate\Console\Command;
 
@@ -41,11 +40,9 @@ class SyncDFEs extends Command
             'proxyConf' => [],
         ];
 
-        $certificate = file_get_contents(base_path('tests/fixtures/cert.pfx'));
+        $certificatePath = base_path('tests/fixtures/cert.pfx');
         $password = '170481';
 
-        $dfeService = new DFEService($config, $certificate, $password);
-
-        JobsSyncDFEs::dispatch($dfeService);
+        JobsSyncDFEs::dispatch($config, $certificatePath, $password);
     }
 }

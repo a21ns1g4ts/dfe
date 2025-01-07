@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\DFEDocsResource\Pages;
+namespace App\Filament\Resources\DFEDocResource\Pages;
 
-use App\Filament\Resources\DFEDocsResource;
+use App\Filament\Resources\DFEDocResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditDFEDocs extends EditRecord
+class EditDFEDoc extends EditRecord
 {
-    protected static string $resource = DFEDocsResource::class;
+    protected static string $resource = DFEDocResource::class;
 
     protected function getHeaderActions(): array
     {

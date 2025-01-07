@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class DFEDocs extends Model
+class DFEDoc extends Model
 {
     protected $table = 'dfe_docs';
 

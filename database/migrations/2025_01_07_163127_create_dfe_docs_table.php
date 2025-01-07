@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('dfe_docs', function (Blueprint $table) {
             $table->id();
-            $table->string('nsu');
+            $table->string('nsu')->unique();
             $table->string('schema');
             $table->text('content');
             $table->string('tipo');

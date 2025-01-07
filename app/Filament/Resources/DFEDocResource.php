@@ -2,17 +2,17 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\DFEDocsResource\Pages;
-use App\Models\DFEDocs;
+use App\Filament\Resources\DFEDocResource\Pages;
+use App\Models\DFEDoc;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 
-class DFEDocsResource extends Resource
+class DFEDocResource extends Resource
 {
-    protected static ?string $model = DFEDocs::class;
+    protected static ?string $model = DFEDoc::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -77,9 +77,9 @@ class DFEDocsResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListDFEDocs::route('/'),
-            'create' => Pages\CreateDFEDocs::route('/create'),
-            'edit' => Pages\EditDFEDocs::route('/{record}/edit'),
+            'index' => Pages\ListDFEDoc::route('/'),
+            'create' => Pages\CreateDFEDoc::route('/create'),
+            'edit' => Pages\EditDFEDoc::route('/{record}/edit'),
         ];
     }
 }
