@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<soap:Envelope
+	xmlns:soap="http://www.w3.org/2003/05/soap-envelope"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+	<soap:Body>
+		<nfeDistDFeInteresseResponse
+			xmlns="http://www.portalfiscal.inf.br/nfe/wsdl/NFeDistribuicaoDFe">
+			<nfeDistDFeInteresseResult>
+				<retDistDFeInt
+					xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+					xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" versao="1.01"
+					xmlns="http://www.portalfiscal.inf.br/nfe">
+					<tpAmb>2</tpAmb>
+					<verAplic>1.7.2</verAplic>
+					<cStat>656</cStat>
+					<xMotivo>Rejeicao: Consumo Indevido (Deve ser aguardado 1 hora para efetuar nova solicitacao caso nao existam mais documentos a serem pesquisados. Tente apos 1 hora)</xMotivo>
+					<dhResp>2025-01-07T14:47:30-03:00</dhResp>
+					<ultNSU>000000000000000</ultNSU>
+					<maxNSU>000000000000000</maxNSU>
+				</retDistDFeInt>
+			</nfeDistDFeInteresseResult>
+		</nfeDistDFeInteresseResponse>
+	</soap:Body>
+</soap:Envelope>
