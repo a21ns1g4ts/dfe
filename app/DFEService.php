@@ -80,38 +80,6 @@ class DFEService
     }
 
     /**
-     * Safely extract node value from XML.
-     */
-    private function getNodeValue(\DOMNode $node, string $tag): ?string
-    {
-        $element = $node->getElementsByTagName($tag)->item(0);
-
-        return $element ? $element->nodeValue : null;
-    }
-
-    /**
-     * Parse the 'loteDistDFeInt' node for documents.
-     */
-    private function parseLote(\DOMNode $node): array
-    {
-        $lote = $node->getElementsByTagName('loteDistDFeInt')->item(0);
-        $loteData = [];
-
-        if ($lote) {
-            foreach ($lote->getElementsByTagName('docZip') as $doc) {
-                $loteData[] = [
-                    'nsu' => $doc->getAttribute('NSU'),
-                    'schema' => $doc->getAttribute('schema'),
-                    'content' => gzdecode(base64_decode($doc->nodeValue)),
-                    'tipo' => substr($doc->getAttribute('schema'), 0, 6),
-                ];
-            }
-        }
-
-        return $loteData;
-    }
-
-    /**
      * Sync DFEs from SEFAZ and insert new records.
      *
      * @param  ?string  $ultNSU  last NSU number received
@@ -148,5 +116,37 @@ class DFEService
         if (! empty($nsusToInsert)) {
             DFEDoc::insert($nsusToInsert);
         }
+    }
+
+    /**
+     * Safely extract node value from XML.
+     */
+    private function getNodeValue(\DOMNode $node, string $tag): ?string
+    {
+        $element = $node->getElementsByTagName($tag)->item(0);
+
+        return $element ? $element->nodeValue : null;
+    }
+
+    /**
+     * Parse the 'loteDistDFeInt' node for documents.
+     */
+    private function parseLote(\DOMNode $node): array
+    {
+        $lote = $node->getElementsByTagName('loteDistDFeInt')->item(0);
+        $loteData = [];
+
+        if ($lote) {
+            foreach ($lote->getElementsByTagName('docZip') as $doc) {
+                $loteData[] = [
+                    'nsu' => $doc->getAttribute('NSU'),
+                    'schema' => $doc->getAttribute('schema'),
+                    'content' => gzdecode(base64_decode($doc->nodeValue)),
+                    'tipo' => substr($doc->getAttribute('schema'), 0, 6),
+                ];
+            }
+        }
+
+        return $loteData;
     }
 }
