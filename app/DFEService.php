@@ -112,7 +112,7 @@ class DFEService
                 break;
             }
 
-            sleep(2);
+            sleep(4);
         }
 
         if (! empty($nsusToInsert)) {
