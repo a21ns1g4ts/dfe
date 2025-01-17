@@ -28,3 +28,4 @@ yarn-error.log
 /storage/company_*
 /filament-saas
 /filament-stripe
+/tests/fixtures
